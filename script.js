@@ -174,16 +174,15 @@ spot.fetch(); // Logs "Spot is fetching!"
  * A function that is defined and immediately invoked
  * Used to create a new scope and avoid polluting the global scope
  * Can be used to create private variables and functions
+ * Frequently used to implement the module pattern
+ * - A design pattern used to encapsulate related code into a single unit
+ * - Helps to organize code and avoid naming conflicts
+ * - Can be used to create private variables and functions
  */
 
-const calculator = (function () {
-  const add = (a, b) => a + b;
-  const sub = (a, b) => a - b;
-  const mul = (a, b) => a * b;
-  const div = (a, b) => a / b;
-  return { add, sub, mul, div };
-})();
-
-calculator.add(3,5); // 8
-calculator.sub(6,2); // 4
-calculator.mul(14,5534); // 77476
+(function() {
+// The first and last parentheses turn the function into an expression
+// The final parentheses invoke the function immediately
+  var message = "Hello from an IIFE!"; // Only accessible within this function
+  console.log(message);
+})(); // Logs "Hello from an IIFE!"
