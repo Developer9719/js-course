@@ -210,3 +210,18 @@ const user2 = createUser("Bob", "bob@example.com");
 
 user1.greet(); // Output: Hello, my name is Alice.
 user2.greet(); // Output: Hello, my name is Bob.
+
+// Factory Function vs Object Constructor
+/**
+ * Factory Function:
+ * - Simpler syntax, just a regular function that returns an object
+ * - No need to use 'new' keyword or 'this' keyword
+ * - Can leverage closures for private variables and functions
+ * - More flexible, can return different types of objects based on input parameters
+ * 
+ * Object Constructor:
+ * - Requires the use of 'new' keyword and 'this' keyword to define properties and methods
+ * - More rigid structure, always returns an instance of the same type of object
+ * - Prototype inheritance can be used to share methods and properties between instances
+ * - Can be less intuitive for beginners due to the use of 'new' and 'this'
+ */
