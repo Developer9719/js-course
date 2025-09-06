@@ -65,3 +65,125 @@ const person1 = new Person('Justin', 28);
 console.log(person1.name); // Returns 'Justin'
 console.log(person1.age); // Returns '28'
 person1.sayHi(); // Returns 'Hi from prototype'
+
+// Scopes
+/**
+ * Global Scope: The outermost scope, accessible from anywhere in the code. Defined outside of any function or block.
+ * Local Scope: A scope defined within a function or block, accessible only within that function or block.
+ */
+
+// Closures
+function makeAdding (firstNumber) {
+  // "first" is scoped within the makeAdding function
+  const first = firstNumber;
+  return function resulting (secondNumber) {
+    // "second" is scoped within the resulting function
+    const second = secondNumber;
+    return first + second;
+  }
+}
+// but we've not seen an example of a "function"
+// being returned, thus far - how do we use it?
+
+const add5 = makeAdding(5);
+console.log(add5(2)) // logs 7
+
+// Lexical Scope
+/**
+ * Consists of a function within another function
+ * Inner function has access to variables and parameters of outer function
+ * Outer function does not have access to variables and parameters of inner function
+ */
+// Closure
+/** 
+ * Functions form closures
+ * - Closure is the combination of a function and the lexical environment within which that function was declared
+ * Can be used in place of an object with only a single method
+ * 
+*/
+function makeFunc() {
+  const name = "Mozilla";
+  function displayName() { // Maintains references to the variables of the outer function (lexical scope)
+    console.log(name);
+  }
+  return displayName;
+}
+
+const myFunc = makeFunc();
+myFunc(); // Reference to displayName function that is created when makeFunc is invoked
+
+// Private Variables and Functions
+/**
+ * Reputation variable is private to the createUser function
+ * Cannot be accessed directly from outside the function
+ * Can only be modified using the giveReputation method
+ * These are used for things that should not be directly accessible from outside the function or returned in the object
+ */
+
+function createUser (name) {
+  const discordName = "@" + name;
+
+  let reputation = 0;
+  const getReputation = () => reputation;
+  const giveReputation = () => reputation++;
+
+  return { name, discordName, getReputation, giveReputation }; // Returns an object
+}
+
+const josh = createUser("josh");
+josh.giveReputation();
+josh.giveReputation();
+
+console.log({
+  discordName: josh.discordName,
+  reputation: josh.getReputation()
+});
+// logs { discordName: "@josh", reputation: 2 }
+
+// Prototype Inheritance with Factory Functions
+/**
+ * Factory functions are functions that return objects
+ * They can be used to create multiple instances of an object with shared methods and properties
+ * Prototypes can be used to share methods and properties between instances of an object created by a factory function
+ */
+
+const dogPrototype = {
+  bark() {
+    console.log(`${this.name} says woof!`);
+  },
+  fetch() {
+    console.log(`${this.name} is fetching!`);
+  }
+};
+
+function createDog(name, breed) {
+  const newDog = Object.create(dogPrototype); // Create a new object with dogPrototype as its prototype
+  newDog.name = name;
+  newDog.breed = breed;
+  return newDog;
+}
+
+const fido = createDog('Fido', 'Labrador');
+const spot = createDog('Spot', 'Dalmatian');
+
+fido.bark(); // Logs "Fido says woof!"
+spot.fetch(); // Logs "Spot is fetching!"
+
+// IIFE (Immediately Invoked Function Expression) Module Pattern
+/**
+ * A function that is defined and immediately invoked
+ * Used to create a new scope and avoid polluting the global scope
+ * Can be used to create private variables and functions
+ */
+
+const calculator = (function () {
+  const add = (a, b) => a + b;
+  const sub = (a, b) => a - b;
+  const mul = (a, b) => a * b;
+  const div = (a, b) => a / b;
+  return { add, sub, mul, div };
+})();
+
+calculator.add(3,5); // 8
+calculator.sub(6,2); // 4
+calculator.mul(14,5534); // 77476
