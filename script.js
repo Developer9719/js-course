@@ -186,3 +186,27 @@ spot.fetch(); // Logs "Spot is fetching!"
   var message = "Hello from an IIFE!"; // Only accessible within this function
   console.log(message);
 })(); // Logs "Hello from an IIFE!"
+
+// Factory Function
+/**
+ * A function that creates and returns new objects
+ * Do not require the use of 'new' keyword or this keyword to define properties and methods
+ * Just a regular function that returns an object
+ * Leverage closures to create private variables and functions that are not accessible from outside the function
+ */
+
+function createUser(name, email) {
+  return {
+    name: name,
+    email: email,
+    greet: function() {
+      console.log(`Hello, my name is ${this.name}.`);
+    }
+  };
+}
+
+const user1 = createUser("Alice", "alice@example.com");
+const user2 = createUser("Bob", "bob@example.com");
+
+user1.greet(); // Output: Hello, my name is Alice.
+user2.greet(); // Output: Hello, my name is Bob.
