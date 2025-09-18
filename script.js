@@ -368,3 +368,4 @@ Entry Point
 - Need to add the type="module" attribute to the script tag in HTML
   */
 
+// NPM (Node Package Manager)
