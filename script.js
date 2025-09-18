@@ -225,3 +225,107 @@ user2.greet(); // Output: Hello, my name is Bob.
  * - Prototype inheritance can be used to share methods and properties between instances
  * - Can be less intuitive for beginners due to the use of 'new' and 'this'
  */
+
+ // Classes
+ // Getters and Setters (Accessor Properties)
+ let user = {
+  name: "John",
+  surname: "Smith",
+
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  },
+
+  set fullName(value) {
+    [this.name, this.surname] = value.split(" ");
+  }
+};
+
+alert(user.fullName); // Gets the current name and surname using the getter
+user.fullName = "Alice Cooper"; // Sets name to "Alice" and surname to "Cooper" using the setter
+
+// Accessor Descriptors
+let user = {
+  name: "John",
+  surname: "Smith"
+};
+
+Object.defineProperty(user, 'fullName', { // Creating a property inside the user object
+  get() {
+    return `${this.name} ${this.surname}`;
+  },
+
+  set(value) {
+    [this.name, this.surname] = value.split(" ");
+  }
+});
+
+alert(user.fullName); // John Smith
+
+for(let key in user) alert(key); // name, surname
+
+// Smart Getters/Setters
+let user = {
+  get name() {
+    return this._name; // Stores passed name in the _name property
+    // _name is not used directly, only through the getter and setter
+  },
+
+  set name(value) {
+    if (value.length < 4) {
+      alert("Name is too short, need at least 4 characters");
+      return;
+    }
+    this._name = value;
+  }
+};
+
+user.name = "Pete";
+alert(user.name); // Pete
+
+user.name = ""; // Name is too short...
+
+// Basic Class Syntax
+// Class: Kind of a function
+class User {
+
+  constructor(name) {
+    // Creates a function named User which becomes the result of the class declaration
+    this.name = name;
+  }
+
+  sayHi() {
+    alert(this.name);
+  }
+
+}
+
+// Usage:
+let user = new User("John"); // Create a new instance of the User class by calling the constructor
+user.sayHi(); // Runs the method sayHi
+
+// "Named Class Expression"
+// (no such term in the spec, but that's similar to Named Function Expression)
+let User = class MyClass {
+  sayHi() {
+    alert(MyClass); // MyClass name is visible only inside the class
+  }
+};
+
+new User().sayHi(); // works, shows MyClass definition
+
+alert(MyClass); // error, MyClass name isn't visible outside of the class
+
+function makeClass(phrase) {
+  // declare a class and return it
+  return class {
+    sayHi() {
+      alert(phrase);
+    }
+  };
+}
+
+// Create a new class
+let User = makeClass("Hello");
+
+new User().sayHi(); // Hello
