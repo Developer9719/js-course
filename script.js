@@ -368,8 +368,42 @@ Entry Point
 - Need to add the type="module" attribute to the script tag in HTML
   */
 
+
 // NPM (Node Package Manager)
-// - importing 3rd party libraries and packages for use in your project
-// package.json 
-// - contains information about the project and its dependencies
-// - npm reads this file to install the correct versions of the packages and run scripts set as an npm command
+/** - importing 3rd party libraries and packages for use in your project
+* package.json 
+* - contains information about the project and its dependencies
+* - npm reads this file to install the correct versions of the packages and run scripts set as an npm command
+*/
+
+
+// Webpack
+/**
+ * Bundling
+ * - Provide it a single entry point file
+ * - It will follow all the import statements and bundle everything into a single file
+ * - This is the file you will link in your HTML
+ * 
+ * Webpack
+ * - npm init -y: Creates a package.json file
+ * - npm install --save-dev webpack webpack-cli: Installs webpack and webpack-cli as dev dependencies, --save-dev saves them in the devDependencies section of package.json
+ *   - Creates a node_modules folder that contains all the packages and their dependencies
+ *   - Creates a package-lock.json file that contains the exact versions of the packages and their dependencies
+ * - 2 Important Directories from Webpack 
+ *   - src: Source code, contains all the files you write
+ *   - dist: Distribution code, contains the bundled file that you will link in your HTML
+ * 
+ * - npx webpack: Runs webpack to bundle the files
+ * 
+ * Handling HTML
+ * - HTMLWebpackPlugin will add the output file from it's configuration as the script tag automatically
+ * 
+ * Loading CSS
+ * - CSS-Loader: Reads CSS files imported in JS files and returns the CSS as a string
+ * - Style-Loader: Injects CSS into the DOM by adding a <style> tag
+ * - The purpose of these loaders is to allow you to import CSS files in your JS files and have them applied to the DOM only when they are needed
+ * 
+ * Loading Images
+ * - Images inside url() in CSS files are automatically handled by Webpack
+ * - Images in src attributes of img tags in HTML files need to be handled by the HTML-Loader
+ */
