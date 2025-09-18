@@ -226,6 +226,7 @@ user2.greet(); // Output: Hello, my name is Bob.
  * - Can be less intuitive for beginners due to the use of 'new' and 'this'
  */
 
+
  // Classes
  // Getters and Setters (Accessor Properties)
  let user = {
@@ -329,3 +330,41 @@ function makeClass(phrase) {
 let User = makeClass("Hello");
 
 new User().sayHi(); // Hello
+
+
+// ES6 Modules
+/** Before ES6 Modules
+ * All code in a single file or multiple files combined into one
+ * Variables and functions in one file can conflict with those in another file
+ * HTML
+<script src="one.js" defer></script>
+<script src="two.js" defer></script>
+
+// one.js
+const greeting = "Hello, Odinite!";
+
+// two.js
+console.log(greeting);
+// Logs "Hello, Odinite!"
+// If two.js loads before one.js, it will throw an error because greeting is not defined yet
+
+After ES6
+- You can export variables and functions from one file and import them into another file
+
+- Named Exports
+  - Place export before variable or function declaration
+  - Put all varaibles and functions you want to export in curly braces export { var1, var2, func1 } at the end of the file
+  - In the other file use import { var1, var2, func1 } from './file.js' to import them
+
+- Default Exports
+  - Can only export 1 thing
+  - Use export default before variable or function declaration
+  - Import it in the next file by giving it any name import anyName from './file.js'
+
+Entry Point
+- Only link 1 script in the HTML file
+- This is the entry point that imports everything else
+- Example: main.js
+- Need to add the type="module" attribute to the script tag in HTML
+  */
+
