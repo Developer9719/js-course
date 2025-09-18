@@ -369,3 +369,7 @@ Entry Point
   */
 
 // NPM (Node Package Manager)
+// - importing 3rd party libraries and packages for use in your project
+// package.json 
+// - contains information about the project and its dependencies
+// - npm reads this file to install the correct versions of the packages and run scripts set as an npm command
