@@ -537,3 +537,22 @@ async function populate() {
   populateHeader(superHeroes);
   populateHeroes(superHeroes);
 }
+
+// OOP Principles
+/**
+ * Single Responsibility
+ * - A class, object, function or anything similar should have all properties and actions related and accomplishing 1 goal
+ * Loosely Coupled Objects
+ * - Each class, object, function or similar should be standalone as much as possible and not rely on others. This allows you to change 1 thing without worry of impacting
+ * multiple other areas of the project
+ * SOLID Priciples
+ * - Single Responsibility
+ * - Open Closed
+ *   - code should be open for extension but closed for modification 
+ * - Liskov Substitution 
+ *   - any class should be substitutable for its parent class without unexpected consequences
+ * - Interface Segregation 
+ *   - an entity should never be forced to implement an interface that contains elements which it will never use
+ * - Dependance Inversion 
+ *   - high level code should never depend on low level interfaces, and should instead use abstractions
+ */
