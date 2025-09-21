@@ -407,3 +407,30 @@ Entry Point
  * - Images inside url() in CSS files are automatically handled by Webpack
  * - Images in src attributes of img tags in HTML files need to be handled by the HTML-Loader
  */
+
+ // NPM Scripts
+ /**
+  * - written in package.json file 
+  *   - "name": "command"
+  * - npm run name - Will run the command
+  */
+
+ // Webpack Modes
+ /**
+  * - dev mode
+  * - production mode
+  * - Ideally create 2 different config files, one for each
+  *   - webpack.dev.js
+  *   - webpack.prod.js
+  *   - package.json
+  *     "scripts": {
+          "build": "webpack --config webpack.prod.js",
+          "dev": "webpack serve --config webpack.dev.js"
+        },
+  */
+
+// Repository Templats
+/**
+ * - on Github, allow for a repo to be a template with setup code you want to reuse in other projects
+ * - 
+ */
