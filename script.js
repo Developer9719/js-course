@@ -501,3 +501,39 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
   mode: 'production',
 });
+
+// JSON
+/**
+ * - universal format for transmitting data on the web
+ * - closely resembles object literal format
+ * - can be parsed as a js object and access properties with dot notation 
+ * 
+ * JSON.parse(fileToConvert);: Converts the JSON file into a JS object
+ * JSON.stringify(superHeroesText);: Converts a JS object into a JSON file
+ */
+
+async function populate() {
+  const requestURL =
+    "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json"; // Stores the link to the JSON file
+  const request = new Request(requestURL); // Creates a new Request object() with the link
+
+  const response = await fetch(request); 
+  const superHeroes = await response.json();
+  /**
+   * fetch() makes the request to the server for the JSON info
+   * promise is returned immediately, it is basically an empty object ready to recieve the json info, current state is pending
+   * the request completes and changes the promise state to fufilled or rejected
+   * json data is received as a string 
+   * .json() is called on the data to convert it into a JS object making it accessible 
+   */
+
+  const superHeroes = JSON.parse(superHeroesText); // Converts JSON to JS object
+
+  let myObj = { name: "Chris", age: 38 };
+  myObj;
+  let myString = JSON.stringify(myObj); // Converts JS object to JSON
+  myString;
+
+  populateHeader(superHeroes);
+  populateHeroes(superHeroes);
+}
