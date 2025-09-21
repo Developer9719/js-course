@@ -432,5 +432,72 @@ Entry Point
 // Repository Templats
 /**
  * - on Github, allow for a repo to be a template with setup code you want to reuse in other projects
- * - 
  */
+
+// Package.json Scripts
+/** 
+ * Variables in commands
+ * - "build": "echo VERSION=$npm_package_version",: $npm_package-version will be replaced with the value listed in that variable
+ * - npm run build --if-present: Runs the build script only if it exists
+ * Lifecycle Scripts
+ * - predefined script names executed automatically by npm at specific stages
+ * - Lifecycle Stages
+ *   - Prepublish: Runs before the package is packed and published and is used to prepare the package for distribution
+ *   - Prepare: Builds and compiles the code. Runs during local development and when installed as a dependancy of another project
+ *   - Pre Install: Runs before package and dependancies are installed, used for setup
+ *   - Post Install: Runs after package and dependancies are installed, used for setup
+ *   - Pre Uninstall: Runs before pacakge is uninstalled and used to preform cleanup tasks before uninstalling dependancies
+ *   - Post Uninstall: Runs after package and dependancies are uninstalled , used to run cleanup tasks
+ *   - Pre Version: Runs before the version is updated 
+ *   - Post Version: Runs after version is updated
+ */
+
+// Webpack Production
+/**
+ * Setup
+ * - Development Bundle: Focuses on source mapping(points errors to original code not compiled, minified code) and localhost server with live reloading
+ * - Production Bundle: Focus on minified code bundles, lighter wieght source mapping and optimized assets to improve load times 
+ * Files
+ * - Ideal setup involves seperate files for development, production and a common file to share code between the two files
+ * - webpack-merge needs to be installed in the project
+ * - Add the following to the end of any command to tell it which config file to use: "--config webpack.dev.js" or "--config webpack.prod.js""
+ */
+/* webpack.common.js */
+ const path = require('path');
+ const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+ module.exports = {
+   entry: {
+     app: './src/index.js',
+   },
+   plugins: [ // Include plugins require for both modes
+     new HtmlWebpackPlugin({
+       title: 'Production',
+     }),
+   ],
+   output: {
+     filename: '[name].bundle.js',
+     path: path.resolve(__dirname, 'dist'),
+     clean: true,
+   },
+ };
+
+ /* webpack.dev.js */
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
+
+module.exports = merge(common, {
+  mode: 'development',
+  devtool: 'inline-source-map',
+  devServer: {
+    static: './dist',
+  },
+});
+
+/* webpack.prod.js */
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
+
+module.exports = merge(common, {
+  mode: 'production',
+});
