@@ -556,3 +556,14 @@ async function populate() {
  * - Dependance Inversion 
  *   - high level code should never depend on low level interfaces, and should instead use abstractions
  */
+
+// Lintimg 
+/**
+ * Linters
+ * - tools that scan code witha set of style rules to report and in some cases auto-repair issues
+ * - most common ESLint
+ * 
+ * Formatters 
+ * - like linters but for JS code 
+ * - Prettier is the most common
+ */
