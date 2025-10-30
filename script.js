@@ -567,3 +567,12 @@ async function populate() {
  * - like linters but for JS code 
  * - Prettier is the most common
  */
+
+// Dynamic User Interface Interactions 
+/**
+ * - Drop Down Menus
+ * - Image Carousel
+ *   - Main div acts as a picture frame
+ *   - Wider div behind shows the image "inside" the frame
+ *   - The controls go on top of the main div
+ */
