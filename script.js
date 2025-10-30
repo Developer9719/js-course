@@ -576,3 +576,11 @@ async function populate() {
  *   - Wider div behind shows the image "inside" the frame
  *   - The controls go on top of the main div
  */
+
+// ES6
+/**
+ * ES6 is just JS
+ * ECMAScript is a standard for programming languages to follow
+ * Browser support for newly released features is no automatic and takes years sometimes
+ * 
+ */
