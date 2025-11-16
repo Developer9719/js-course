@@ -626,3 +626,18 @@ fetchPromise.then((response) => { // pass a handler function to the then method 
 });
 
 console.log("Started request…");
+
+// API's: Application Programming Interfaces
+/**
+ * - Usually need and account and a key to access endpoint data
+ */
+
+// URL (required), options (optional)
+fetch('https://url.com/some/url')
+  .then(function(response) {
+    // Successful response :)
+    // Use dot not notation to access the info you need
+  })
+  .catch(function(err) {
+    // Error :(
+  });
