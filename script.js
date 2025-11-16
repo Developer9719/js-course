@@ -584,3 +584,45 @@ async function populate() {
  * Browser support for newly released features is no automatic and takes years sometimes
  * 
  */
+
+// Synchronous Code vs Async Code
+/**
+ * Synchronous Code:
+ * - Each line is run one after the other
+ * - Program runs the line based on the order it was written in 
+ */
+
+/**
+ * Asynchronous Code: 
+ * - Allows you to run tasks in the background without preventing the flow of the main program  
+ * - Examples:
+ *   - HTTP requests (fetch())
+ *   - Accessing a users camera or mic (getUserMedia())
+ *   - Asking a user to select files (showOpenFilePicker())
+ *   - Getting user interactions like click handlers
+ * 
+ * - event handlers can be attached to http request to notify when the request repeats
+ * 
+ * - Callback
+ *   - function passed to another function as an argument, the first function is expected to be called at the right time 
+ *   - event handlers are a specific type of callback
+ * 
+ * - Promises
+ *   - an object returned by an async function that contains the status of the operation
+ * 
+ *   - async function starts an operation and returns a promise 
+ *   - attach handlers to the promise object that execute when the operation has succeeded or failed 
+ *   - fetch() is the modern way to handle this 
+ */
+const fetchPromise = fetch( // fetch() makes the HTTP request, fetchPromise stores the returned result
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+);
+
+console.log(fetchPromise); // Returns promise state
+
+fetchPromise.then((response) => { // pass a handler function to the then method of the promise, then() runs when promise is resolved
+  console.log(`Received response: ${response.status}`);
+  // if the fetch operation succeeds the promise calls the handler passing in a response object from the server
+});
+
+console.log("Started request…");
