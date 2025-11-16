@@ -641,3 +641,15 @@ fetch('https://url.com/some/url')
   .catch(function(err) {
     // Error :(
   });
+
+// Async and Await 
+
+async function getPersonsInfo(name) { // async defines an asyncronous function, automatically returns a promise
+  try {
+    const people = await server.getPeople(); // await means pause until complete
+    const person = people.find(person => { return person.name === name });
+    return person;
+  } catch (error) {
+    // Handle the error any way you'd like
+  }
+}
