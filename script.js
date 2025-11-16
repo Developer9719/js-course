@@ -653,3 +653,19 @@ async function getPersonsInfo(name) { // async defines an asyncronous function, 
     // Handle the error any way you'd like
   }
 }
+
+// Intro to CS
+/**
+ * Algorithms
+ * - set of instructions to solve a problem step by step
+ */
+/**
+ * Algorithms in Web Dev
+ * - Page Rank (Google Search Algorithm): Gives websites a rank of importance based on 
+ * how many sites (and the sites importance (IE: government site is 
+ * more important than blog site)) link to it  
+ */
+/**
+ * Pseudocode
+ * - English language that describes code
+ */
