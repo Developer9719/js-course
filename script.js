@@ -669,3 +669,12 @@ async function getPersonsInfo(name) { // async defines an asyncronous function, 
  * Pseudocode
  * - English language that describes code
  */
+
+// Recursion 
+/**
+ * - when a function calls itself
+ * - useful when a task can be split into smaller simpler tasks of the same kind
+ * - breaks a big problem into smaller pieces and feeds that solution back into the original function until an answer is found
+ * 
+ * - Divide and Conquer is an important algorithm design paradigm based on multi-branched recursion 
+ */
